@@ -12,7 +12,7 @@ cookbooks/update_ruby/attributes/default.rb
 
 ## Examples
 
-### Single user instal
+### Single user install
 
 Install Ruby `2.6.2` in home directory of user named `chef`.
 
