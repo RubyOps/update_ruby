@@ -1,18 +1,28 @@
 # update_ruby
 
-Chef wrapper cookbook to install and update Ruby
+Chef wrapper cookbook to install and update Ruby.
 
-## Change attributes
+## Howto change attributes
 
-To change the Ruby version edit the default attributes file.
+To change an attribute like the Ruby version edit the default attributes file as shown below.
 
 ````
 cookbooks/update_ruby/attributes/default.rb
 ````
 
-## Different versions per server
+## Examples
 
-Edit `cookbooks/update_ruby/attributes/default.rb`
+### Single user instal
+
+Install Ruby `2.6.2` in home directory of user named `chef`.
+
+````
+default['rbenv']['action'] = 'install'
+default['rbenv']['version'] = '2.6.2'
+default['rbenv']['user'] = 'chef'
+````
+
+### Single user, multiple servers with different versions per server
 
 ````
 case node['name']
@@ -23,13 +33,16 @@ when 'server0.domain.com'
 when 'server1.domain.com'
   default['rbenv']['action'] = 'install'
   default['rbenv']['version'] = '2.6.1'
-  default['rbenv']['user'] = 'chefko'
+  default['rbenv']['user'] = 'username'
 end
 ````
 
 ## Install Ruby for multiple users
 
 ````
+default['rbenv']['action'] = 'install'
+default['rbenv']['version'] = '2.6.2'
+
 # Users
 default['rbenv']['users'] = [
   "chef",
