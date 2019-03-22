@@ -6,6 +6,7 @@
 
 version = node['rbenv']['version']
 user = node['rbenv']['user']
+users = node['rbenv']['users']
 install_action = node['rbenv']['action']
 system_install = node['rbenv']['system']['install']
 
@@ -47,5 +48,26 @@ unless user.nil?
     rbenv_version version
     user user
     code "gem update --system"
+  end
+end
+
+unless users.nil?
+  users.each do |user|
+    rbenv_user_install user do
+      user user
+    end
+    rbenv_ruby version do
+      verbose true
+      user user
+      rbenv_action install_action
+    end
+    rbenv_rehash 'rehash' do
+      user user
+    end
+    rbenv_script 'user: gem update system' do
+      rbenv_version version
+      user user
+      code "gem update --system"
+    end
   end
 end

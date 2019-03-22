@@ -5,3 +5,10 @@ default['rbenv']['version'] = '2.6.2'
 default['rbenv']['system']['install'] = false
 # User
 default['rbenv']['user'] = 'chef'
+
+# Users
+default['rbenv']['users'] = [
+  "chef",
+  "chef1",
+  "chef2"
+]

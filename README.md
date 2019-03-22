@@ -26,3 +26,14 @@ when 'server1.domain.com'
   default['rbenv']['user'] = 'chefko'
 end
 ````
+
+## Install Ruby for multiple users
+
+````
+# Users
+default['rbenv']['users'] = [
+  "chef",
+  "chef1",
+  "chef2"
+]
+````
