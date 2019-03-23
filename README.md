@@ -50,3 +50,22 @@ default['rbenv']['users'] = [
   "chef2"
 ]
 ````
+
+## Multiple users with different versions
+
+````
+default['rbenv']['users_and_versions'] = {
+  :chef => {
+    'username' => 'chef',
+    'version' => '2.6.2'
+  },
+  :chef1 => {
+    'username' => 'chef1',
+    'version' => '2.6.1'
+  },
+  :chef2 => {
+    'username' => 'chef2',
+    'version' => '2.6.2'
+  }
+}
+````
